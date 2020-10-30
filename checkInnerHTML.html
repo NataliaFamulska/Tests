@@ -28,7 +28,7 @@
     </div>
     
     <script>
-        var winH = window.innerHeight; 
+        var winH = window.innerHeight; // pobieram wysokość przeglądarki
         var div1 = document.getElementById("check1");
         var div2 = document.getElementById("check2");
         var div3 = document.getElementById("check3");
@@ -36,17 +36,16 @@
         document.getElementById("descp").innerHTML = "Wysokość pobrana z inner HTML to: " + winH + "<br>Wysokość pobrana z outer HTML to: " + owinH;
         div1.style.height=winH+"px";
         div2.style.height=winH+"px";
-        div3.style.height=winH+"px";
+        div3.style.height=winH+"px";  // każdemu z elementów nadaje wysokość okna, każdy div to kafelek
         var lastScroll = document.body.scrollTop;
-        var diff = window.scrollY - lastScroll;
-        lastScroll = window.scrollY;
+        var UpDown = window.scrollY - lastScroll;
         var winH2 = winH * 2;
         var winH3 = winH * 3;
 
 
 
         function check(){
-            if(diff > 0){
+            if(UpDown > 0){
                 if(document.body.scrollTop == 0 || document.documentElement.scrollTop == 0){
                     document.documentElement.scrollTop = winH;
                 }
