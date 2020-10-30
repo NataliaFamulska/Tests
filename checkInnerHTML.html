@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body onscroll="scroll()">
+
+    <div id="check1">
+        <p id="descp"></p>
+    </div>
+    <div id="check2">
+        <p>drugi div</p>
+    </div>
+    <div id="check3">
+        <p>trzeci div</p>
+    </div>
+    
+    <script>
+        var winH = window.innerHeight; 
+        var div1 = document.getElementById("check1");
+        var div2 = document.getElementById("check2");
+        var div3 = document.getElementById("check3");
+        var owinH = window.outerHeight;
+        document.getElementById("descp").innerHTML = "Wysokość pobrana z inner HTML to: " + winH + "<br>Wysokość pobrana z outer HTML to: " + owinH;
+        div1.style.height=winH+"px";
+        div2.style.height=winH+"px";
+        div3.style.height=winH+"px";
+        var lastScroll = document.body.scrollTop;
+        var diff = window.scrollY - lastScroll;
+        lastScroll = window.scrollY;
+        var winH2 = winH * 2;
+        var winH3 = winH * 3;
+
+
+
+        function check(){
+            if(diff > 0){
+                if(document.body.scrollTop == 0 || document.documentElement.scrollTop == 0){
+                    document.documentElement.scrollTop = winH;
+                }
+                else if(document.body.scrollTop == winH || document.documentElement.scrollTop == winH){
+                    document.documentElement.scrollTop = winH2;
+                }
+            }
+            else{
+                if(document.body.scrollTop == winH3 || document.documentElement.scrollTop == winH3){
+                    document.documentElement.scrollTop = winH2;
+                }
+                else if(document.body.scrollTop == winH2 || document.documentElement.scrollTop == winH2){
+                    document.documentElement.scrollTop = 0;
+                }
+            }       
+        }
+
+        window.addEventListener("scroll", check(), false);
+ 
+    </script>
+
+</body>
+</html>
